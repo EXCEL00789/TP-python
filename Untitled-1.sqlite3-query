@@ -1,0 +1,29 @@
+-- database: ./ventesmagasin.db
+
+-- Use the ▷ button in the top right corner to run the entire file.
+-- Création de la table Produits
+CREATE TABLE Produits (
+    id_produit INTEGER PRIMARY KEY,
+    nom_produit TEXT NOT NULL,
+    categorie TEXT,
+    prix_unitaire REAL NOT NULL
+);
+
+-- Création de la table Clients
+CREATE TABLE Clients (
+    id_client INTEGER PRIMARY KEY,
+    nom_client TEXT NOT NULL,
+    email TEXT
+);
+
+-- Création de la table Ventes
+CREATE TABLE Ventes (
+    id_vente INTEGER PRIMARY KEY,
+    id_produit INTEGER,
+    id_client INTEGER,
+    date_vente TEXT NOT NULL,
+    quantite INTEGER NOT NULL,
+    montant_total REAL NOT NULL,
+    FOREIGN KEY (id_produit) REFERENCES Produits(id_produit),
+    FOREIGN KEY (id_client) REFERENCES Clients(id_client)
+);
